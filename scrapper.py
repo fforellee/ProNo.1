@@ -1,12 +1,14 @@
-import pdb
 from geopy.geocoders import  Nominatim
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
-
 import requests
 
 #Scrapper get the relevant data from the souce
+preco = []
+endereco = []
+geocode = []
+
 def Scrapper():
     options = Options()
     options.headless = True 
@@ -19,8 +21,6 @@ def Scrapper():
     driver.get(source)
 
 #Initialize empty list
-    preco = []
-    endereco = []
 
 #Gets data from the site´s source
     for a in range(1,25):
@@ -29,9 +29,9 @@ def Scrapper():
         preco.append(preco_source.text)
         endereco.append(endereco_source.text)
 # def geocode_generator():
-    geocode = []
     geolocator = Nominatim(user_agent="Preco_moradia")
     for i in range(len(endereco)):
         geocode.append(geolocator.geocode(endereco[i]))
     driver.close()
     return preco,endereco,geocode
+

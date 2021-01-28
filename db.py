@@ -19,7 +19,6 @@ def insert_into_table(preco,endereco,latitude,longitue):
     database.close()
 
 def recreate_table():
-
     try:
         db.execute('''CREATE TABLE moradia(
                  id moradia PRIMARY KEY ,
@@ -57,21 +56,4 @@ def select_table():
 # Uncomment for testing and running //////////////////////////////////////////
 
 # recreate_table()
-select_table()
-
-preco = []
-endereco = []
-latitude = []
-longitude = []
-data = scrapper.Scrapper()
-
-for i in range(20): 
-    try:
-        preco.append(data[0][i])
-        endereco.append(data[1][i])
-        latitude.append(data[2][i].latitude)
-        longitude.append(data[2][i].longitude)
-    except:
-        pass
-
-# insert_into_table(preco,endereco,latitude,longitude)
+# select_table()
